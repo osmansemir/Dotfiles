@@ -6,18 +6,21 @@ source $ZSH/oh-my-zsh.sh
 ### EXPORT
 export TERM="xterm-256color"                      # getting proper colors
 
+# ----- Bat (better cat) -----
+export BAT_THEME=gruvbox-dark
+
 ### SET MANPAGER
 ### Uncomment only one of these!
 
 ### "bat" as manpager
-#export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-#export MANROFFOPT="-c"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
 
 ### "vim" as manpager
 #export MANPAGER='/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
 
 ### "nvim" as manpager
-export MANPAGER="nvim +Man!"
+# export MANPAGER="nvim +Man!"
 
 ### "less" as manpager
 #export MANPAGER="less"
@@ -241,16 +244,10 @@ if [ -f /etc/bash.command-not-found ]; then
     . /etc/bash.command-not-found
 fi
 
-
-
-
-
 ### GREETER ###
 # figlet "AselamuAlykum"
 # nitch
 #fm6000 -g 10  -f ~/.arch_logo.txt -c random
-
-
 
 source /home/osmansemir/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -259,3 +256,60 @@ source /home/osmansemir/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ### SETTING THE STARSHIP PROMPT ###
 eval "$(starship init zsh)"
+
+# ---- FZF -----
+
+# Set up fzf key bindings and fuzzy completion
+# eval "$(fzf --zsh)"
+
+# -- Use fd instead of fzf --
+
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source ~/fzf-git.sh/fzf-git.sh
+
+# --- setup fzf theme ---
+fg="#EBDBB2"
+bg="#282828"
+bg_highlight="#3C3836"
+purple="#B16286"
+blue="#458588"
+cyan="#8EC07C"
+
+export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
+
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+
+export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo $'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+  esac
+}
