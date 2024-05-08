@@ -227,6 +227,10 @@ alias gega='fuck'
 ### fm6000
 alias fm='fm6000 -g 10  -f ~/.arch_logo.txt -c random'
 
+### AselamuAlykum
+alias asw='figlet "AselamuAlykum"'
+
+
 ### RANDOM COLOR SCRIPT ###
 # Get this script from my GitLab: gitlab.com/dwt1/shell-color-scripts
 # Or install it from the Arch User Repository: shell-color-scripts
@@ -242,8 +246,8 @@ fi
 
 
 ### GREETER ###
-figlet "AselamuAlykum"
-nitch
+# figlet "AselamuAlykum"
+# nitch
 #fm6000 -g 10  -f ~/.arch_logo.txt -c random
 
 
