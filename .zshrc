@@ -149,9 +149,10 @@ alias fgrep='fgrep --color=auto'
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias lynx='lynx -cfg=~/.lynx/lynx.cfg -lss=~/.lynx/lynx.lss -vikeys'
-alias vifm='./.config/vifm/scripts/vifmrun'
+# alias vifm='./.config/vifm/scripts/vifmrun'
 alias ncmpcpp='ncmpcpp ncmpcpp_directory=$HOME/.config/ncmpcpp/'
 alias mocp='mocp -M "$XDG_CONFIG_HOME"/moc -O MOCDir="$XDG_CONFIG_HOME"/moc'
+alias cd='z'
 
 # ps
 alias psa="ps auxf"
@@ -259,9 +260,6 @@ eval "$(starship init zsh)"
 
 # ---- FZF -----
 
-# Set up fzf key bindings and fuzzy completion
-# eval "$(fzf --zsh)"
-
 # -- Use fd instead of fzf --
 
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
@@ -280,9 +278,13 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Setup fzf
+# ---------
+if [[ ! "$PATH" == */home/osmansemir/.fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}/home/osmansemir/.fzf/bin"
+fi
 
-source ~/fzf-git.sh/fzf-git.sh
+eval "$(fzf --zsh)"
 
 # --- setup fzf theme ---
 fg="#EBDBB2"
