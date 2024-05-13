@@ -1,52 +1,37 @@
 return {
-  'mfussenegger/nvim-dap',
-  dependencies = {
-    "rcarriga/nvim-dap-ui",
-    "nvim-neotest/nvim-nio" ,
-    "jay-babu/mason-nvim-dap.nvim",
-  },
-  config = function()
-    local dap, dapui = require("dap"), require("dapui")
+	"mfussenegger/nvim-dap",
+	dependencies = {
+		"rcarriga/nvim-dap-ui",
+		"nvim-neotest/nvim-nio",
+		"jay-babu/mason-nvim-dap.nvim",
+	},
+	config = function()
+		local dap, dapui = require("dap"), require("dapui")
 
-    dapui.setup(
+		dapui.setup()
 
-    )
+		dap.adapters.lldb = {
+			type = "executable",
+			command = "/usr/bin/lldb-vscode", -- adjust as needed, must be absolute path
+			name = "lldb",
+		}
 
-    dap.adapters.lldb = {
-      type = 'executable',
-      command = '/bin/codelldb', -- adjust as needed, must be absolute path
-      name = 'lldb'
-    }
+		dap.configurations.cpp = {
+			{
+				name = "Launch",
+				type = "lldb",
+				request = "launch",
+				program = function()
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+				end,
+				cwd = "${workspaceFolder}",
+				stopOnEntry = false,
+				args = {},
+			},
+		}
+		dap.configurations.c = dap.configurations.cpp
 
-    dap.configurations.c = dap.configurations.cpp
-    dap.configurations.cpp = {
-      {
-        name = 'Launch',
-        type = 'lldb',
-        request = 'launch',
-        program = function()
-          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-        end,
-        cwd = '${workspaceFolder}',
-        stopOnEntry = false,
-        args = {},
-
-        -- 💀
-        -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
-        --
-        --    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
-        --
-        -- Otherwise you might get the following error:
-        --
-        --    Error on launch: Failed to attach to the target process
-        --
-        -- But you should be aware of the implications:
-        -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
-        -- runInTerminal = false,
-      },
-    }
-
-    dap.listeners.before.attach.dapui_config = function()
+		dap.listeners.before.attach.dapui_config = function()
 			dapui.open()
 		end
 		dap.listeners.before.launch.dapui_config = function()
@@ -59,14 +44,11 @@ return {
 			dapui.close()
 		end
 
-    local keymap = vim.keymap
+		local keymap = vim.keymap
 
-    keymap.set("n", "<leader>db", ":DapToggleBreakpoint<CR>" , { desc = "Toggle Breakpoint" })
-    keymap.set("n", "<leader>dc", ":DapContinue<CR>", { desc = "Debugger Continue" })
-    keymap.set("n", "<leader>do", ":DapStepOver<CR>" , { desc = "Debugger Step Over" })
-    keymap.set("n", "<leader>di",  ":DapStepInto<CR>", { desc = "Debugger Step Into" })
-
-  end,
+		keymap.set("n", "<leader>db", ":DapToggleBreakpoint<CR>", { desc = "Toggle Breakpoint" })
+		keymap.set("n", "<leader>dc", ":DapContinue<CR>", { desc = "Debugger Continue" })
+		keymap.set("n", "<leader>do", ":DapStepOver<CR>", { desc = "Debugger Step Over" })
+		keymap.set("n", "<leader>di", ":DapStepInto<CR>", { desc = "Debugger Step Into" })
+	end,
 }
-
-

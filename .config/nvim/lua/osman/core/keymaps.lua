@@ -13,7 +13,7 @@ keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- delete single character without copying into register
--- keymap.set("n", "x", '"_x')
+keymap.set("n", "x", '"_x')
 
 -- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
@@ -30,3 +30,29 @@ keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" 
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+
+keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Moving highlighted down" })
+keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Moving highlighted up" })
+
+keymap.set("n", "J", "mzJ`z", { desc = "Append the next line to the current one with cursor in middle" })
+
+keymap.set("n", "<C-d>", "<C-d>zz", { desc = "down motion with cursor in middle" })
+keymap.set("n", "<C-u>", "<C-u>zz", { desc = "up motion with cursor in middle" })
+
+keymap.set("n", "n", "nzzzv", { desc = "Cycle through search results with cursor in middle" })
+keymap.set("n", "N", "Nzzzv", { desc = "Cycle backward through search results with cursor in middle" })
+
+keymap.set("x", "<leader>p", [["_dP]], { desc = "Pastes with out yanking" })
+
+-- keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "" })
+-- keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "" })
+-- keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "" })
+-- keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "" })
+
+keymap.set(
+	"n",
+	"<leader>sr",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "Replaces all instances of the word under cursor" }
+)
+keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }, { desc = "Makes the file executable" })
