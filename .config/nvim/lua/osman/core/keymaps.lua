@@ -6,6 +6,18 @@ local keymap = vim.keymap -- for conciseness
 ---------------------
 -- General Keymaps -------------------
 
+-- use Leader q to quit a file
+keymap.set("n", "<Leader>q", ":q<CR>", { desc = "Quit a file" })
+
+-- use Leader ww to quit a file
+keymap.set("n", "<Leader>ww", ":write!<CR>", { desc = "Quit a file" })
+
+-- Panes resizing
+keymap.set("n", "+", ":vertical resize +5<CR>", { desc = "vertical resize +" })
+keymap.set("n", "_", ":vertical resize -5<CR>", { desc = "vertical resize -" })
+keymap.set("n", "=", ":resize +5<CR>", { desc = "horozintal resize +" })
+keymap.set("n", "-", ":resize -5<CR>", { desc = "horozintal resize -" })
+
 -- use jk to exit insert mode
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
