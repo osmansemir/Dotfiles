@@ -14,7 +14,6 @@ return {
 
 		local mason_tool_installer = require("mason-tool-installer")
 
-		local mason_dap = require("mason-nvim-dap")
 		-- enable mason and configure icons
 		mason.setup({
 			ui = {
@@ -24,6 +23,12 @@ return {
 					package_uninstalled = "✗",
 				},
 			},
+		})
+
+		-- list of daps for mason to install
+		require("mason-nvim-dap").setup({
+			ensure_installed = { "cpptools" },
+			automatic_installation = true,
 		})
 
 		mason_lspconfig.setup({
@@ -43,35 +48,6 @@ return {
 			},
 		})
 
-		-- mason_dap.setup({
-		-- 	ensure_installed = { "codelldb" }, -- Ensure LLDB is installed
-		-- 	handlers = {
-		-- 		function(config)
-		-- 	 Generic handler for all sources with no specific handler
-		-- 			-- Keep original functionality
-		-- 			require("mason-nvim-dap").default_setup(config)
-		-- 		end,
-		-- 		codelldb = function(config)
-		-- 			-- Handler for C debugger with LLDB
-		-- 			config.adapters = {
-		-- 				type = "executable",
-		-- 				command = "/usr/bin/lldb", -- Use LLDB as the adapter
-		-- 				name = "lldb",
-		-- 				args = {
-		-- 					"-o",
-		-- 					"breakpoint set --file ${file}",
-		-- 					"-o",
-		-- 					"run",
-		-- 					"-o",
-		-- 					"breakpoint delete 1",
-		-- 					"${file}",
-		-- 				},
-		-- 			}
-		-- 			require("mason-nvim-dap").default_setup(config)
-		-- 		end,
-		-- 	},
-		-- })
-
 		mason_tool_installer.setup({
 			ensure_installed = {
 				"prettier", -- prettier formatter
@@ -80,6 +56,10 @@ return {
 				"black", -- python formatter
 				"pylint", -- python linter
 				"eslint_d", -- js linter
+				"clang-format", -- C formatter
+				"cpplint",
+				"htmlhint",
+				"stylelint",
 			},
 		})
 	end,

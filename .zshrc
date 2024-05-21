@@ -1,6 +1,6 @@
 ## oh-my-zsh configs 
 export ZSH="/home/osmansemir/.oh-my-zsh"
-plugins=(git zsh-autosuggestions z npm sudo)
+plugins=(z zsh-autosuggestions node sudo copypath command-not-found)
 source $ZSH/oh-my-zsh.sh
 
 ### EXPORT
@@ -232,7 +232,6 @@ alias fm='fm6000 -g 10  -f ~/.arch_logo.txt -c random'
 
 ### AselamuAlykum
 alias asw='figlet "AselamuAlykum"'
-
 
 ### RANDOM COLOR SCRIPT ###
 # Get this script from my GitLab: gitlab.com/dwt1/shell-color-scripts
