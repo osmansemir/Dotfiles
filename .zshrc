@@ -1,6 +1,6 @@
 ## oh-my-zsh configs 
 export ZSH="/home/osmansemir/.oh-my-zsh"
-plugins=(z zsh-autosuggestions node sudo copypath command-not-found)
+plugins=(zsh-autosuggestions node sudo copypath command-not-found)
 source $ZSH/oh-my-zsh.sh
 
 ### EXPORT
@@ -140,6 +140,10 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
+#updating Grub
+alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+
+
 # confirm before overwriting something
 #alias cp="cp -i"
 #alias mv='mv -i'
@@ -275,6 +279,9 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
+
+# ---- Zoxide (better cd) ----
+eval "$(zoxide init zsh)"
 
 # Setup fzf
 # ---------
