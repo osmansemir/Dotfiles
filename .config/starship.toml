@@ -338,7 +338,7 @@ detect_env_vars = []
 [gcloud.project_aliases]
 
 [git_branch]
-format = "on [$symbol$branch(:$remote_branch)]($style) "
+format = "[$symbol$branch(:$remote_branch)]($style) "
 symbol = " "
 style = "bold purple"
 truncation_length = 9223372036854775807

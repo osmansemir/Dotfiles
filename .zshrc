@@ -6,6 +6,10 @@ source $ZSH/oh-my-zsh.sh
 ### EXPORT
 export TERM="xterm-256color"                      # getting proper colors
 
+export CC="clang"
+export CFLAGS="-ferror-limit=1 -gdwarf-4 -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-gnu-folding-constant -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wno-unused-but-set-variable -Wshadow"
+export LDLIBS="-lcrypt -lcs50 -lm"
+
 # ----- Bat (better cat) -----
 export BAT_THEME=gruvbox-dark
 
@@ -109,8 +113,8 @@ alias pys='python3 -m http.server'
 alias bs='browser-sync start --proxy "localhost:8000" --files "index.html, css/*.css, js/*.js, html/*.html"'
 
 # vim and emacs
-alias em="/usr/bin/emacs -nw"
-alias emacs="emacsclient -c -a 'emacs'"
+#alias em="/usr/bin/emacs -nw"
+#alias emacs="emacsclient -c -a 'emacs'"
 
 ## Changing "ls" to "exa"
 alias ls='exa -al --color=always --group-directories-first --icons=always' # my preferred listing

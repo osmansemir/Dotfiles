@@ -11,6 +11,9 @@ keymap.set("n", "<Leader>q", ":q<CR>", { desc = "Quit a file" })
 
 -- use Leader ww to quit a file
 keymap.set("n", "<Leader>ww", ":write!<CR>", { desc = "Quit a file" })
+--
+-- use Leader wq to save and quit a file
+keymap.set("n", "<Leader>wq", ":wq<CR>", { desc = "Quit a file" })
 
 -- Panes resizing
 keymap.set("n", "+", ":vertical resize +5<CR>", { desc = "vertical resize +" })

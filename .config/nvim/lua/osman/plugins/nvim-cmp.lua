@@ -16,7 +16,7 @@ return {
 		"onsails/lspkind.nvim", -- vs-code like pictograms
 		"jcha0713/cmp-tw2css", -- css tailwind
 		"Jezda1337/nvim-html-css", -- css Intellisense
-		"quangnguyen30192/cmp-nvim-ultisnips",
+		-- "quangnguyen30192/cmp-nvim-ultisnips",
 		"hrsh7th/cmp-nvim-lsp",
 	},
 	config = function()
@@ -89,7 +89,7 @@ return {
 				{ name = "path" }, -- file system paths
 				{ name = "cmp-tw2css" }, -- css tailwind
 				{ name = "html-css" }, -- html css
-				{ name = "ultisnips" },
+				-- { name = "ultisnips" },
 			}),
 
 			-- configure lspkind for vs-code like pictograms in completion menu

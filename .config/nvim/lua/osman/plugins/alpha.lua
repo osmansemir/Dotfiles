@@ -222,9 +222,26 @@ return {
 		}
 
 		-- Set Footer
+		local fortune = require("fortune")
 
-		local fortune = require("fortune").get_fortune()
-		dashboard.section.footer.val = fortune
+		fortune.setup({
+			-- max width the fortune section should take place
+			max_width = 60,
+
+			-- Controls the amount of text displayed
+			-- short - One liners (default)
+			-- long - Multiple lines
+			-- mixed - Combination of above
+			display_format = "mixed",
+
+			-- The type of fortune to display
+			-- quotes - Random techy quotes
+			-- tips - Neovim productivity tips
+			-- mixed - Combination of above
+			content_type = "mixed",
+		})
+
+		dashboard.section.footer.val = fortune.get_fortune()
 
 		-- Send config to alpha
 		alpha.setup(dashboard.opts)
