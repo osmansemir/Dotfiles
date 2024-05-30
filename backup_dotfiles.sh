@@ -10,7 +10,7 @@ target_config="/home/osmansemir/Desktop/Dotfiles/.config/"
 
 # Copy all dotfiles to the target directory
 cp -r /home/osmansemir/.zshrc /home/osmansemir/.gitconfig "$target_dir"
-cp -r /home/osmansemir/.config/kitty /home/osmansemir/.config/nvim /home/osmansemir/.config/tmux /home/osmansemir/.config/starship.toml /home/osmansemir/.config/rofi /home/osmansemir/.config/alacritty "$target_config"
+cp -r /home/osmansemir/.config/polybar /home/osmansemir/.config/i3 /home/osmansemir/.config/picom /home/osmansemir/.config/kitty /home/osmansemir/.config/nvim /home/osmansemir/.config/tmux /home/osmansemir/.config/starship.toml /home/osmansemir/.config/rofi /home/osmansemir/.config/alacritty "$target_config"
 
 
 
