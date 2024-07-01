@@ -11,6 +11,7 @@
 	defaultBranch = main
   [core]
     pager = delta
+	editor = vim
 
 [interactive]
     diffFilter = delta --color-only
@@ -29,3 +30,5 @@
 
 [diff]
     colorMoved = default
+[color]
+	ui = auto

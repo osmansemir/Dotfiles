@@ -42,5 +42,6 @@ return {
 		keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics<cr>", { desc = "[F]ind [D]iagnostics" })
 		keymap.set("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", { desc = "[F]ind [K]eymaps" })
 		keymap.set("n", "<leader>fy", "<cmd>Telescope lsp_document_symbols<cr>", { desc = "[F]ind S[Y]mbols" })
+		keymap.set("n", "<leader>fn", "<cmd>Noice telescope<cr>", { desc = "[F]ind recent [N]otifications" })
 	end,
 }

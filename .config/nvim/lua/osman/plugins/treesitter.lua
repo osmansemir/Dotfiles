@@ -7,7 +7,11 @@ return {
 		-- import nvim-treesitter plugin
 		local treesitter = require("nvim-treesitter.configs")
 
+		-- local ts_utils = require("nvim-treesitter.ts_utils")
+		-- vim.keymap.set("n", "<leader>th", ts_utils.get_node_at_cursor(), { desc = "Get node under cursor" })
+
 		-- configure treesitter
+		---@diagnostic disable-next-line: missing-fields
 		treesitter.setup({ -- enable syntax highlighting
 			highlight = {
 				enable = true,

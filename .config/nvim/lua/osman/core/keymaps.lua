@@ -21,6 +21,10 @@ keymap.set("n", "_", ":vertical resize -5<CR>", { desc = "vertical resize -" })
 keymap.set("n", "=", ":resize +5<CR>", { desc = "horozintal resize +" })
 keymap.set("n", "-", ":resize -5<CR>", { desc = "horozintal resize -" })
 
+-- use E and B for $ and ^
+keymap.set("n", "E", "$", { desc = "Go to End of line" })
+keymap.set("n", "B", "^", { desc = "Go to Start of line" })
+
 -- use jk to exit insert mode
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 

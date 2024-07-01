@@ -1,3 +1,4 @@
+-- TODO: inlay hints
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },

@@ -4,6 +4,7 @@ return {
 		"ellisonleao/gruvbox.nvim",
 		"folke/tokyonight.nvim",
 		"navarasu/onedark.nvim",
+		"sainnhe/gruvbox-material",
 	},
 	config = function()
 		local themery = require("themery")

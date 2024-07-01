@@ -9,31 +9,37 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
+for_window [class="Ulauncher"] border pixel 0
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 # set $mod Mod1
 
-# exec --no-startup-id feh --slideshow-delay 10 --bg-scale /home/osmansemir/Pictures/wallpapers/
+exec -- no-startup-id picom --config ~/.config/picom/picom.conf
+# Gnome keyring daemon
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg
+# Gnome Authentication Agent
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id xrdb -merge ~/.Xresources
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
-exec --no-startup-id xautolock -time 10 -locker blurlock
-exec --no-startup-id nitrogen --restore; sleep 1; picom --config ~/.config/picom/picom.conf
+exec --no-startup-id xautolock -time 15 -locker blurlock
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id blueman-applet
+exec --no-startup-id xrandr --output HDMI-1 --right-of eDP-1
 
+#Taking Screenshots
+
+# Full screen screenshot
+bindsym Ctrl+Print exec shutter -f -o ~/Pictures/screenshot_$(date +%Y-%m-%d_%H-%M-%S).png | xclip -selection clipboard -t image/png
+# Active window screenshot
+bindsym Ctrl+Shift+Print exec shutter -w -o ~/Pictures/screenshot_$(date +%Y-%m-%d_%H-%M-%S).png | xclip -selection clipboard -t image/png
+# Select area screenshot
+bindsym Print exec shutter -s -o ~/Pictures/screenshot_$(date +%Y-%m-%d_%H-%M-%S).png | xclip -selection clipboard -t image/png
 
 # kill any hanging polybar processes 
 exec_always killall polybar
 exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
-
-bindsym Print exec maim "/home/$USER/Pictures/$(date).jpg"
-bindsym $mod+Print exec maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date).jpg"
-bindsym Shift+Print exec maim --select "/home/$USER/Pictures/$(date).jpg"
-
-## Clipboard Screenshots
-bindsym Ctrl+Print exec maim | xclip -selection clipboard -t image/png
-bindsym Ctrl+$mod+Print exec maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
-bindsym Ctrl+Shift+Print exec maim --select | xclip -selection clipboard -t image/png
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -52,7 +58,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -86,11 +92,17 @@ bindsym $mod+x kill
 
 # start rofi (a program launcher)
 bindsym Control+Return exec --no-startup-id /home/osmansemir/.config/rofi/scripts/launcher_t1 
-# bindsym $mod+space exec --no-startup-id rofi -show combi
-# bindsym $mod+Tab exec --no-startup-id rofi -show window
+bindsym $mod+d exec --no-startup-id rofi -show combi
+bindsym $mod+Tab exec --no-startup-id rofi -show window
 
 #File manager
-bindsym Control+Shift+d exec pcmanfm
+bindsym Control+Shift+d exec --no-startup-id pcmanfm
+
+#Telegram
+bindsym Control+Shift+t exec --no-startup-id telegram-desktop
+
+#Calculator
+bindsym Control+Shift+g exec --no-startup-id galculator
 
 # new window split direction toggle
 bindsym $mod+t split toggle
@@ -146,6 +158,7 @@ set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
+set $ws9 "9"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -156,6 +169,7 @@ bindsym $mod+5 workspace number $ws5
 bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -166,14 +180,33 @@ bindsym $mod+Shift+5 move container to workspace number $ws5
 bindsym $mod+Shift+6 move container to workspace number $ws6
 bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+
+# Assign workspaces to specific monitors
+workspace 1 output HDMI-1
+workspace 2 output HDMI-1
+workspace 3 output eDP-1
+workspace 4 output eDP-1
+workspace 5 output eDP-1
+workspace 6 output HDMI-1
+workspace 7 output HDMI-1
+workspace 8 output HDMI-1
+workspace 9 output HDMI-1
+workspace 10 output HDMI-1
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
 bindsym $mod+space workspace back_and_forth
+
 #navigate workspaces next / previous
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
+bindsym $mod+Ctrl+l workspace next
+bindsym $mod+Ctrl+h workspace prev
+
+# Moving workspaces between screens 
+bindsym $mod+p move workspace to output right
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -183,7 +216,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # Open applications on specific workspaces
-# assign [class="Thunderbird"] $ws1
+assign [class="Thunderbird"] $ws7
 # assign [class="Firefox"] $ws2
 # assign [class="Pcmanfm"] $ws3
 
@@ -210,6 +243,7 @@ for_window [class="Simple-scan"] floating enable border normal
 for_window [class="(?i)System-config-printer.py"] floating enable border normal
 for_window [class="Thus"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
+for_window [class="muezzin"] floating enable sticky enable border normal
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -221,8 +255,7 @@ mode "resize" {
         # Pressing down will grow the window’s height.
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt bindsym semicolon resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -256,7 +289,7 @@ mode "$mode_system" {
 }
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id blurlock
+# bindsym $mod+Shift+l exec --no-startup-id blurlock
 
 # set primary gruvbox colorscheme colors
 set $bg               #282828
@@ -277,7 +310,7 @@ set $bg_yellow        #fabd2f
 # gruvbox
 # class                 title     |bg      |text       |indicator   |border
 client.focused          $orange       $bg       $orange   $orange   $orange
-client.focused_inactive $bg       $bg   $green     $purple   $green
+client.focused_inactive $bg       $bg   $bg     $purple   $bg
 client.unfocused        $bg        $bg   $green     $purple   $bg
 client.urgent           $red        $red        $fg0      $red      $red
 client.background       $bg

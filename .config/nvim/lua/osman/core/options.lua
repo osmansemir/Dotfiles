@@ -33,8 +33,6 @@ opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 -- backspace
 opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
 
--- TODO: configure system clipboard in i3wm
---
 -- clipboard
 opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 
