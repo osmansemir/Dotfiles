@@ -1,4 +1,4 @@
 .config/alacritty/themes/*
 .config/btop/btop.log
-
+.config/nvim/lazy-lock.json
 

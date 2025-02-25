@@ -259,7 +259,7 @@ fi
 # nitch
 #fm6000 -g 10  -f ~/.arch_logo.txt -c random
 
-source /home/osmansemir/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /home/osmansemir/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ### setting up the f**k
 #eval $(thefuck --alias)
@@ -339,4 +339,6 @@ function yy() {
 
 . "$HOME/.atuin/bin/env"
 
-eval "$(atuin init zsh)"
+#eval "$(atuin init zsh)"
+
+source .oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
