@@ -23,3 +23,7 @@ My **Neovim** setup is fine-tuned for efficiency and performance. Key features i
 - **nvim-treesitter** – Improved syntax parsing
 - **Git Integration** – Signs and diffing tools
 - **Custom Keybindings** – Faster workflow
+
+ Here is a screenshot of my custom Neovim config
+ 
+![image](https://github.com/user-attachments/assets/29a2e831-da23-421f-a315-36888587f65e)
