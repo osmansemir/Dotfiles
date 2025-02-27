@@ -327,3 +327,4 @@ source .oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh)"
+export EDITOR=nvim
