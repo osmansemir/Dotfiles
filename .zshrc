@@ -112,10 +112,6 @@ alias pys='python3 -m http.server'
 #Browser Sync
 alias bs='browser-sync start --proxy "localhost:8000" --files "index.html, css/*.css, js/*.js, html/*.html"'
 
-# vim and emacs
-#alias em="/usr/bin/emacs -nw"
-#alias emacs="emacsclient -c -a 'emacs'"
-
 ## Changing "ls" to "exa"
 alias ls='exa -al --color=always --group-directories-first --icons=always' # my preferred listing
 alias la='exa -a --color=always --group-directories-first --icons=always'  # all files and dirs
@@ -235,9 +231,6 @@ alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/mas
 # Unlock LBRY tips
 #alias tips='lbrynet txo spend --type=support --is_not_my_input --blocking'
 
-#The F**k 
-alias gega='fuck'
-
 ### fm6000
 alias fm='fm6000 -g 10  -f ~/.arch_logo.txt -c random'
 
@@ -253,16 +246,6 @@ alias asw='figlet "AselamuAlykum"'
 if [ -f /etc/bash.command-not-found ]; then
     . /etc/bash.command-not-found
 fi
-
-### GREETER ###
-# figlet "AselamuAlykum"
-# nitch
-#fm6000 -g 10  -f ~/.arch_logo.txt -c random
-
-#source /home/osmansemir/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-### setting up the f**k
-#eval $(thefuck --alias)
 
 ### SETTING THE STARSHIP PROMPT ###
 eval "$(starship init zsh)"
@@ -337,8 +320,10 @@ function yy() {
 	rm -f -- "$tmp"
 }
 
-. "$HOME/.atuin/bin/env"
 
-#eval "$(atuin init zsh)"
 
 source .oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
