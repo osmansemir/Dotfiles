@@ -322,7 +322,7 @@ function yy() {
 
 
 
-source .oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 . "$HOME/.atuin/bin/env"
 
