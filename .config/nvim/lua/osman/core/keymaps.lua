@@ -53,13 +53,10 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to [T]ab [N]ext" }) 
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to [T]ab [P]revious " }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
-keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Moving highlighted down" })
-keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Moving highlighted up" })
-
 keymap.set("n", "J", "mzJ`z", { desc = "Append the next line to the current one with cursor in middle" })
 
-keymap.set("n", "<C-d>", "<C-d>zz", { desc = "down motion with cursor in middle" })
-keymap.set("n", "<C-u>", "<C-u>zz", { desc = "up motion with cursor in middle" })
+-- keymap.set("n", "<C-d>", "<C-d>zz", { desc = "down motion with cursor in middle" })
+-- keymap.set("n", "<C-u>", "<C-u>zz", { desc = "up motion with cursor in middle" })
 
 keymap.set("n", "n", "nzzzv", { desc = "Cycle through search results with cursor in middle" })
 keymap.set("n", "N", "Nzzzv", { desc = "Cycle backward through search results with cursor in middle" })

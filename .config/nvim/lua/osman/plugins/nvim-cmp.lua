@@ -17,9 +17,6 @@ return {
 		"saadparwaiz1/cmp_luasnip", -- for autocompletion
 		"rafamadriz/friendly-snippets", -- useful snippets
 		"onsails/lspkind.nvim", -- vs-code like pictograms
-		"jcha0713/cmp-tw2css", -- css tailwind
-		"Jezda1337/nvim-html-css", -- css Intellisense
-		-- "quangnguyen30192/cmp-nvim-ultisnips",
 		"hrsh7th/cmp-nvim-lsp",
 	},
 	config = function()
@@ -84,15 +81,11 @@ return {
 			}),
 			-- sources for autocompletion
 			sources = cmp.config.sources({
+				{ name = "luasnip" }, -- snippets
 				{ name = "nvim_lsp" },
 				{ name = "codeium" },
-				{ name = "cmp_tabnine" },
-				{ name = "luasnip" }, -- snippets
 				{ name = "buffer" }, -- text within current buffer
 				{ name = "path" }, -- file system paths
-				{ name = "cmp-tw2css" }, -- css tailwind
-				{ name = "html-css" }, -- html css
-				-- { name = "ultisnips" },
 			}),
 
 			-- configure lspkind for vs-code like pictograms in completion menu
@@ -101,6 +94,7 @@ return {
 					maxwidth = 50,
 					ellipsis_char = "...",
 					mode = "text_symbol",
+					symbol_map = { Codeium = "" },
 				}),
 			},
 		})

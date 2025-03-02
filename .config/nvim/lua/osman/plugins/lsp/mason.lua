@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 return {
 	"williamboman/mason.nvim",
 	dependencies = {
@@ -34,13 +35,11 @@ return {
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
 			ensure_installed = {
-				-- "tsserver",
+				"ts_ls",
 				"html",
 				"cssls",
 				"tailwindcss",
-				"svelte",
 				"lua_ls",
-				"graphql",
 				"emmet_ls",
 				"prismals",
 				"pyright",
@@ -55,11 +54,11 @@ return {
 				"isort", -- python formatter
 				"black", -- python formatter
 				"pylint", -- python linter
-				"eslint_d", -- js linter
 				"clang-format", -- C formatter
-				"cpplint",
-				"htmlhint",
-				"stylelint",
+				"cpplint", --C linter
+				"eslint_d", -- js linter
+				"htmlhint", --html linter
+				"stylelint", --css linter
 			},
 		})
 	end,
