@@ -162,6 +162,13 @@ return {
 			desc = "Find Git Files",
 		},
 		{
+			"<leader>ft",
+			function()
+				Snacks.picker.todo_comments()
+			end,
+			desc = "Todo",
+		},
+		{
 			"<leader>fp",
 			function()
 				Snacks.picker.projects()
@@ -257,7 +264,7 @@ return {
 		},
 		-- search
 		{
-			'<leader>sR"',
+			"<leader>sR",
 			function()
 				Snacks.picker.registers()
 			end,
@@ -277,22 +284,22 @@ return {
 			end,
 			desc = "Autocmds",
 		},
-		{
-			"<leader>sb",
-			function()
-				Snacks.picker.lines()
-			end,
-			desc = "Buffer Lines",
-		},
+		-- {
+		-- 	"<leader>sb",
+		-- 	function()
+		-- 		Snacks.picker.lines()
+		-- 	end,
+		-- 	desc = "Buffer Lines",
+		-- },
+		-- {
+		-- 	"<leader>sc",
+		-- 	function()
+		-- 		Snacks.picker.command_history()
+		-- 	end,
+		-- 	desc = "Command History",
+		-- },
 		{
 			"<leader>sc",
-			function()
-				Snacks.picker.command_history()
-			end,
-			desc = "Command History",
-		},
-		{
-			"<leader>sC",
 			function()
 				Snacks.picker.commands()
 			end,
@@ -313,7 +320,7 @@ return {
 			desc = "Buffer Diagnostics",
 		},
 		{
-			"<leader>sh",
+			"<leader>fh",
 			function()
 				Snacks.picker.help()
 			end,
@@ -382,13 +389,13 @@ return {
 			end,
 			desc = "Quickfix List",
 		},
-		{
-			"<leader>sR",
-			function()
-				Snacks.picker.resume()
-			end,
-			desc = "Resume",
-		},
+		-- {
+		-- 	"<leader>sR",
+		-- 	function()
+		-- 		Snacks.picker.resume()
+		-- 	end,
+		-- 	desc = "Resume",
+		-- },
 		{
 			"<leader>su",
 			function()
@@ -427,18 +434,18 @@ return {
 			desc = "References",
 		},
 		{
-			"gI",
+			"gi",
 			function()
 				Snacks.picker.lsp_implementations()
 			end,
 			desc = "Goto Implementation",
 		},
 		{
-			"gy",
+			"gt",
 			function()
 				Snacks.picker.lsp_type_definitions()
 			end,
-			desc = "Goto T[y]pe Definition",
+			desc = "Goto [T]ype Definition",
 		},
 		{
 			"<leader>ss",

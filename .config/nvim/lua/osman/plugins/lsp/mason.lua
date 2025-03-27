@@ -56,7 +56,7 @@ return {
 				"pylint", -- python linter
 				"clang-format", -- C formatter
 				"cpplint", --C linter
-				"eslint_d", -- js linter
+				"eslint", -- js linter
 				"htmlhint", --html linter
 				"stylelint", --css linter
 			},

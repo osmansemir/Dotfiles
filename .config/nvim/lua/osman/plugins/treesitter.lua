@@ -52,6 +52,7 @@ return {
 					node_decremental = "<bs>",
 				},
 			},
+			vim.filetype.add({ extension = { ejs = "html" } }),
 		})
 	end,
 }

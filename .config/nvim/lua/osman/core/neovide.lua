@@ -1,6 +1,6 @@
 local neovideConfig = function()
 	if vim.g.neovide then
-		vim.o.guifont = "JetBrainsMono Nerd Font:h9"
+		vim.o.guifont = "JetBrainsMono Nerd Font:h14"
 		vim.g.neovide_padding_top = 0
 		vim.g.neovide_padding_bottom = 0
 		vim.g.neovide_padding_right = 0

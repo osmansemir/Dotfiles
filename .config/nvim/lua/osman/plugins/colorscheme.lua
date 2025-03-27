@@ -1,70 +1,3 @@
--- return {
--- 	"sainnhe/gruvbox-material",
--- 	lazy = false,
--- 	priority = 1000,
--- 	config = function()
--- 		-- Optionally configure and load the colorscheme
--- 		-- directly inside the plugin declaration.
--- 		vim.g.gruvbox_material_enable_italic = true
--- 		vim.g.gruvbox_material_cursor = "orange"
--- 		-- vim.g.gruvbox_material_background = "hard" -- Available values: 'hard', 'medium'(default), 'soft'
--- 		vim.g.gruvbox_material_foreground = "original" -- Available values:  'material'(default), 'mix', 'original'
--- 		vim.g.gruvbox_material_better_performance = 1
--- 		vim.g.gruvbox_material_transparent_background = 0 -- Available values: 0, 1, 2
--- 		vim.g.gruvbox_material_dim_inactive_windows = 1
--- 		vim.g.gruvbox_material_visual = "orange background"
--- 		vim.g.gruvbox_material_menu_selection_background = "orange"
--- 		vim.g.gruvbox_material_float_style = "dim"
--- 		vim.g.gruvbox_material_diagnostic_text_highlight = 0
--- 		vim.g.gruvbox_material_diagnostic_virtual_text = "colored"
--- 		vim.g.gruvbox_material_current_word = "bold"
--- 		vim.g.gruvbox_material_enable_bold = 1
---
--- 		vim.cmd.colorscheme("gruvbox")
--- 	end,
--- }
--- return {
--- 	"ellisonleao/gruvbox.nvim",
--- 	priority = 1000,
--- 	config = function()
--- 		local colors = require("gruvbox").palette
--- 		require("gruvbox").setup({
--- 			terminal_colors = true, -- add neovim terminal colors
--- 			undercurl = true,
--- 			underline = true,
--- 			bold = true,
--- 			italic = {
--- 				strings = true,
--- 				emphasis = true,
--- 				comments = true,
--- 				operators = false,
--- 				folds = true,
--- 			},
--- 			strikethrough = true,
--- 			invert_selection = false,
--- 			invert_signs = false,
--- 			invert_tabline = false,
--- 			invert_intend_guides = false,
--- 			inverse = true, -- invert background for search, diffs, statuslines and errors
--- 			contrast = "", -- can be "hard", "soft" or empty string
--- 			palette_overrides = {},
--- 			overrides = {
--- 				NoiceCmdlinePopupBorder = { fg = colors.bright_blue },
--- 				NoiceCmdlinePopupTitle = { bg = colors.dark0 },
--- 				NoiceCmdlineIcon = { fg = colors.bright_blue },
--- 				String = { fg = colors.bright_aqua },
--- 				Include = { fg = colors.neutral_aqua },
--- 				["@tag.delimiter"] = { fg = colors.bright_green },
--- 				["@tag.attribute"] = { fg = colors.bright_green },
--- 				["@variable.parameter.bash"] = { fg = colors.light3 },
--- 			},
--- 			dim_inactive = false,
--- 			transparent_mode = false,
--- 		})
--- 		vim.o.background = "dark" -- or "light" for light mode
--- 		vim.cmd([[colorscheme gruvbox]])
--- 	end,
--- }
 return {
 	"catppuccin/nvim",
 	name = "catppuccin",
@@ -134,7 +67,7 @@ return {
 					crust = "#141617",
 				},
 			},
-			transparent_background = false,
+			transparent_background = true,
 			show_end_of_buffer = false,
 			integration_default = false,
 			integrations = {
@@ -157,7 +90,7 @@ return {
 					return {
 						CmpItemMenu = { fg = colors.surface2 },
 						CursorLineNr = { fg = colors.text },
-						FloatBorder = { bg = colors.base, fg = colors.surface0 },
+						FloatBorder = { bg = colors.base, fg = colors.blue },
 						GitSignsChange = { fg = colors.peach },
 						LineNr = { fg = colors.overlay0 },
 						LspInfoBorder = { link = "FloatBorder" },
@@ -180,7 +113,8 @@ return {
 						NeoTreeTabSeparatorActive = { fg = colors.mantle, bg = colors.mantle },
 						NeoTreeTabSeparatorInactive = { fg = colors.crust, bg = colors.crust },
 						NeoTreeWinSeparator = { fg = colors.base, bg = colors.base },
-						NormalFloat = { bg = colors.base },
+						NormalFloat = { bg = colors.surface0 },
+						SnacksPicker = { bg = colors.base },
 						Pmenu = { bg = colors.mantle, fg = "" },
 						PmenuSel = { bg = colors.surface0, fg = "" },
 						TelescopePreviewBorder = { bg = colors.crust, fg = colors.crust },

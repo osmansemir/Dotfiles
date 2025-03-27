@@ -9,6 +9,9 @@ local keymap = vim.keymap -- for conciseness
 -- use ; as :
 keymap.set("n", ";", ":", { desc = "use ; as :" })
 
+-- Select all
+keymap.set("n", "<C-a>", "gg<S-v>G", { desc = "Select all" })
+
 -- use Leader q to quit a file
 keymap.set("n", "<Leader>q", ":q<CR>", { desc = "Quit a file" })
 
