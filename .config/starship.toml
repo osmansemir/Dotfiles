@@ -102,8 +102,8 @@ commands = [
 
 [character]
 format = "$symbol "
-success_symbol = "[~~>](bold green)"
-error_symbol = "[✘](bold red)"
+success_symbol = "[󰧂](bold green)"
+error_symbol = "[](bold red)"
 vimcmd_symbol = "[❮](bold green)"
 vimcmd_visual_symbol = "[❮](bold yellow)"
 vimcmd_replace_symbol = "[❮](bold purple)"
@@ -998,7 +998,7 @@ disabled = true
 
 [sudo]
 format = "[as $symbol]($style)"
-symbol = "😎 "
+symbol = "󰒃 "
 style = "bold blue"
 allow_windows = false
 disabled = false
