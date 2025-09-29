@@ -112,12 +112,12 @@ alias pys='python3 -m http.server'
 #Browser Sync
 alias bs='browser-sync start --proxy "localhost:8000" --files "index.html, css/*.css, js/*.js, html/*.html"'
 
-## Changing "ls" to "exa"
-alias ls='exa -al --color=always --group-directories-first --icons=always' # my preferred listing
-alias la='exa -a --color=always --group-directories-first --icons=always'  # all files and dirs
-alias ll='exa -l --color=always --group-directories-first --sort=modified --icons=always'  # long format
-alias lt='exa -aT --color=always --group-directories-first --icons=always' # tree listing
-alias l.='exa -a | grep -E "^\."'
+## Changing "ls" to "eza"
+alias ls='eza -al --color=always --group-directories-first --icons=always' # my preferred listing
+alias la='eza -a --color=always --group-directories-first --icons=always'  # all files and dirs
+alias ll='eza -l --color=always --group-directories-first --sort=modified --icons=always'  # long format
+alias lt='eza -aT --color=always --group-directories-first --icons=always' # tree listing
+alias l.='eza -a | grep -E "^\."'
 
 # pacman and yay
 alias pacsyu='sudo pacman -Syu'                  # update only standard pkgs
@@ -320,11 +320,16 @@ function yy() {
 	rm -f -- "$tmp"
 }
 
-
-
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+alias nvim="NVIM_APPNAME=nvim-lazy nvim"
 
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh --disable-up-arrow)"
 export EDITOR=nvim
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
