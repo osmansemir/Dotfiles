@@ -4,10 +4,10 @@ return {
   opts = {},
   -- stylua: ignore
   keys ={
-    {"<leader>ws", false},
-    {"<leader>wS", false},
-    {"<leader>wl", false},
-    {"<leader>wd", false},
+    {"<leader>qs", false},
+    {"<leader>qS", false},
+    {"<leader>ql", false},
+    {"<leader>qd", false},
     { "<leader>zs", function() require("persistence").load() end, desc = "Restore Session" },
     { "<leader>zS", function() require("persistence").select() end,desc = "Select Session" },
     { "<leader>zr", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },

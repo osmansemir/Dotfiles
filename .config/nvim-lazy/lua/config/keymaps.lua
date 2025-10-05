@@ -6,16 +6,17 @@
 local keymap = vim.keymap -- for conciseness
 
 -- use Leader q to quit a file
-keymap.set("n", "<Leader>q", ":q<CR>", { desc = "Quit a file" })
+keymap.set("n", "<Leader>q", ":quit<CR>", { noremap = true, silent = true, desc = "Quit a file" })
+keymap.set("n", "C-q", ":quit<CR>", { noremap = true, silent = true, desc = "Quit a file" })
 
 -- use Leader wq to save and quit a file
-keymap.set("n", "<Leader>wq", ":wq<CR>", { desc = "Save and Quit a file" })
+keymap.set("n", "<Leader>wq", ":wq<CR>", { noremap = true, silent = true, desc = "Save and Quit" })
 
 -- use Leader ww to quit a file
-keymap.set("n", "<Leader>ww", ":write!<CR>", { desc = "Save a file" })
+keymap.set("n", "<Leader>ww", ":write!<CR>", { noremap = true, silent = true, desc = "Save file" })
 
 -- use jk to exit insert mode
-keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
+keymap.set("i", "jk", "<ESC>", { noremap = true, silent = true, desc = "Exit insert mode with jk" })
 
 -- use E and B for $ and ^
 keymap.set("n", "E", "$", { desc = "Go to End of line" })
@@ -35,8 +36,8 @@ keymap.set("n", "N", "Nzzzv", { desc = "Cycle backward through search results wi
 keymap.set("x", "<leader>p", [["_dP]], { desc = "Pastes with out yanking" })
 
 -- window management
-keymap.set("n", "<leader>s-", "<C-w>v", { desc = "[S]plit window [V]ertically" }) -- split window vertically
-keymap.set("n", "<leader>s|", "<C-w>s", { desc = "[S]plit window [H]orizontally" }) -- split window horizontally
+keymap.set("n", "<leader>s|", "<C-w>v", { desc = "[S]plit window [V]ertically" }) -- split window vertically
+keymap.set("n", "<leader>s-", "<C-w>s", { desc = "[S]plit window [H]orizontally" }) -- split window horizontally
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make [S]plits [E]qual size" }) -- make split windows equal width & height
 keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Current [S]plit Close[X]" }) -- close current split window
 Snacks.toggle.zoom():map("<leader>wm"):map("<leader>sz")
