@@ -89,6 +89,14 @@ return {
         end,
       },
     })
-    vim.keymap.set("n", "\\", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+    -- vim.keymap.set("n", "\\", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+    vim.keymap.set("n", "\\", function()
+      local ft = vim.bo.filetype
+      local bt = vim.bo.buftype
+      if ft == "grug-far" or bt == "nofile" or bt == "prompt" then
+        return
+      end
+      require("oil").open()
+    end, { desc = "Open Oil unless in plugin UI buffer" })
   end,
 }
