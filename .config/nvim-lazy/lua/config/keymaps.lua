@@ -11,6 +11,7 @@ keymap.set("n", "C-q", ":quit<CR>", { noremap = true, silent = true, desc = "Qui
 
 -- use Leader wq to save and quit a file
 keymap.set("n", "<Leader>wq", ":wq<CR>", { noremap = true, silent = true, desc = "Save and Quit" })
+keymap.set("n", "<leader>wa", ":wa<CR>", { noremap = true, silent = true, desc = "Write all files" })
 
 -- use Leader ww to quit a file
 keymap.set("n", "<Leader>ww", ":write!<CR>", { noremap = true, silent = true, desc = "Save file" })
