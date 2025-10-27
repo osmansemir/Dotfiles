@@ -5,6 +5,7 @@ source $ZSH/oh-my-zsh.sh
 
 ### EXPORT
 export TERM="xterm-256color"                      # getting proper colors
+export XKB_CONFIG_ROOT="$HOME/.config/xkb"
 
 export CC="clang"
 export CFLAGS="-ferror-limit=1 -gdwarf-4 -ggdb3 -O0 -std=c11 -Wall -Werror -Wextra -Wno-gnu-folding-constant -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wno-unused-but-set-variable -Wshadow"

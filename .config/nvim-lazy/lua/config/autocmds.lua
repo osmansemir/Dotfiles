@@ -13,3 +13,19 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.b.completion = false
   end,
 })
+
+-- Neovide config
+local neovideConfig = function()
+  if vim.g.neovide then
+    vim.o.guifont = "JetBrainsMono Nerd Font:h12"
+    vim.g.neovide_padding_top = 2
+    vim.g.neovide_padding_bottom = 0
+    vim.g.neovide_padding_right = 1
+    vim.g.neovide_padding_left = 1
+    vim.g.neovide_cursor_vfx_mode = "pixiedust"
+    vim.g.neovide_hide_mouse_when_typing = false
+    vim.g.neovide_cursor_animate_in_insert_mode = false
+  end
+end
+
+neovideConfig()

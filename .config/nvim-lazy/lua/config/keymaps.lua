@@ -5,6 +5,9 @@
 
 local keymap = vim.keymap -- for conciseness
 
+-- use Leader : for ;
+keymap.set("n", ";", ":", { noremap = true, desc = "use ; as :" })
+
 -- use Leader q to quit a file
 keymap.set("n", "<Leader>q", ":quit<CR>", { noremap = true, silent = true, desc = "Quit a file" })
 keymap.set("n", "C-q", ":quit<CR>", { noremap = true, silent = true, desc = "Quit a file" })
