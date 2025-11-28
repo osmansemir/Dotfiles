@@ -6,7 +6,7 @@
 local keymap = vim.keymap -- for conciseness
 
 -- use Leader : for ;
-keymap.set("n", ";", ":", { noremap = true, desc = "use ; as :" })
+-- keymap.set("n", ";", ":", { noremap = true, desc = "use ; as :" })
 
 -- use Leader q to quit a file
 keymap.set("n", "<Leader>q", ":quit<CR>", { noremap = true, silent = true, desc = "Quit a file" })
@@ -14,6 +14,8 @@ keymap.set("n", "C-q", ":quit<CR>", { noremap = true, silent = true, desc = "Qui
 
 -- use Leader wq to save and quit a file
 keymap.set("n", "<Leader>wq", ":wq<CR>", { noremap = true, silent = true, desc = "Save and Quit" })
+
+-- use Leader wa to save all
 keymap.set("n", "<leader>wa", ":wa<CR>", { noremap = true, silent = true, desc = "Write all files" })
 
 -- use Leader ww to quit a file

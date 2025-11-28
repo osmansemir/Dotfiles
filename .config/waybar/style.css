@@ -52,6 +52,11 @@
 /* } */
 /**/
 #custom-update {
+  border-radius: 4px;
+  margin: 6px 3px;
+  padding: 6px 12px;
+  background-color: @background;
+  color: @foreground;
   font-size: 15px;
 }
 /**/
@@ -125,7 +130,6 @@ window#waybar.hidden {
 }
 
 #custom-screenrecording-indicator,
-#custom-update,
 #pulseaudio,
 #custom-omarchy,
 #memory,

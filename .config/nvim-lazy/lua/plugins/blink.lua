@@ -4,6 +4,7 @@ return {
     keymap = {
       preset = "enter",
       ["<C-j>"] = { "select_next", "fallback_to_mappings" },
+      ["<C-k>"] = { "select_prev", "fallback_to_mappings" },
       ["<Tab>"] = {
         function(cmp)
           if cmp.snippet_active() then
@@ -16,7 +17,6 @@ return {
         "fallback",
       },
       ["<S-Tab>"] = { "snippet_backward", "fallback" },
-      ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
     },
   },
 }
